@@ -1,13 +1,14 @@
 #ifndef LIST
 #define LIST
 #include <stdio.h>
+
 #include "door_struct.h"
 typedef struct node List;
 typedef struct door Door;
 
 struct node {
-    struct door *door;
-    struct node *next;
+    struct door* door;
+    struct node* next;
 };
 
 struct node* init(struct door* door);

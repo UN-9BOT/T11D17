@@ -1,28 +1,18 @@
 #include "list.h"
 
-int main(void) {
-    Door *test = malloc (sizeof(List));
-    test->id = 0;
-    test->status = 0;
-    List* pList = init(test);
-    /* tNode = add_door( */
-    /* add_door( */
-}
-
-
 List* init(Door* door) {
-    List *tNode = malloc (sizeof(List));
-    tNode->door = door;
-    tNode->next = NULL;
-    return (tNode);
+    List* head = malloc(sizeof(List));
+    head->door = door;
+    head->next = NULL;
+    return (head);
 }
 
 List* add_door(List* elem, Door* door) {
-    List* target = malloc (sizeof(List));
+    List* target = malloc(sizeof(List));
     target->door = door;
-    target->next = elem -> next;
+    target->next = elem->next;
     elem->next = target;
-    return (elem);
+    return (elem->next);  // указатель на вставленный элемент
 }
 
 List* find_door(int door_id, List* root) {
@@ -33,9 +23,8 @@ List* find_door(int door_id, List* root) {
         }
         current = current->next;
     }
-    return (current);
+    return (current);  // if not find return NULL
 }
-
 
 List* remove_door(List* elem, List* root) {
     List* current = root;
@@ -48,21 +37,23 @@ List* remove_door(List* elem, List* root) {
 
     if (previous) {
         trash = previous->next;
-        previous->next=current->next;
+        previous->next = current->next;
     } else {
-
-
-    free(trash->door);
-    free(trash);
-    return (root);
+        trash = current;
+        root = current->next;
+    }
+    if (current != NULL) {
+        free(elem->door);
+        free(elem);
+    }
+    return (trash);
 }
-            
 
-/* void destroy(List* root) { */
-/*     List* current = root->next; */
-/*     while (current != NULL) { */
-/*         free(current->door); */
-/*         free(current); */
-/*         current = current->next; */
-/*     } */
-/* } */
+void destroy(List* root) {
+    List* current = root;
+    while (current != NULL) {
+        free(current->door);
+        free(current);
+        current = current->next;
+    }
+}

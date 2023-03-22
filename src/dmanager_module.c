@@ -3,7 +3,6 @@
 #define DOORS_COUNT 15
 #define MAX_ID_SEED 10000
 
-
 int main() {
     struct door doors[DOORS_COUNT];
     initialize_doors(doors);
@@ -26,7 +25,6 @@ void initialize_doors(struct door* doors) {
     }
 }
 
-
 void sort(struct door* doors) {
     for (int i = 0; i < DOORS_COUNT; i++) {
         for (int j = 0; j < DOORS_COUNT - 1; j++) {
@@ -47,7 +45,7 @@ void closeDoor(struct door* doors) {
 
 void prResult(struct door* doors) {
     for (int i = 0; i < DOORS_COUNT; i++) {
-        struct door *pdr = &doors[i];
+        struct door* pdr = &doors[i];
         printf("%d, %d\n", pdr->id, pdr->status);
     }
 }
