@@ -15,7 +15,7 @@ int main(void) {
 }
 
 void initTest() {
-    Door *test = malloc(sizeof(List));
+    Door *test = malloc(sizeof(Door));
     test->id = 0;
     test->status = 3;
     List *header = init(test);
@@ -31,10 +31,10 @@ void initTest() {
 }
 
 void addTest() {
-    Door *test = malloc(sizeof(List));  // 1st el
+    Door *test = malloc(sizeof(Door));  // 1st el
     test->id = 0;
     test->status = 3;
-    Door *test2 = malloc(sizeof(List));  // 2st el
+    Door *test2 = malloc(sizeof(Door));  // 2st el
     test2->id = 1;
     test2->status = 2;
     List *header = init(test);  // init 1st el header
@@ -57,7 +57,7 @@ void findDoorTest() {
     List *result[5];
     int flag = 0;
     for (int i = 0; i < 5; i++) {  // malloc for doors
-        doors[i] = malloc(sizeof(List));
+        doors[i] = malloc(sizeof(Door));
         doors[i]->id = i;
         doors[i]->status = i;
     }
@@ -88,7 +88,7 @@ void removeDoorTest() {
     List *lists[5];
     int flag = 0;
     for (int i = 0; i < 5; i++) {  // malloc for doors
-        doors[i] = malloc(sizeof(List));
+        doors[i] = malloc(sizeof(Door));
         doors[i]->id = i;
         doors[i]->status = i;
     }
