@@ -28,7 +28,6 @@ List* find_door(int door_id, List* root) {
 
 List* remove_door(List* elem, List* root) {
     List* current = root;
-    List* trash = NULL;
     List* previous = NULL;
     while (current != elem) {
         previous = current;
@@ -36,17 +35,15 @@ List* remove_door(List* elem, List* root) {
     }
 
     if (previous) {
-        trash = previous->next;
         previous->next = current->next;
     } else {
-        trash = current;
         root = current->next;
     }
     if (current != NULL) {
         free(elem->door);
         free(elem);
     }
-    return (trash);
+    return (root);
 }
 
 void destroy(List* root) {
