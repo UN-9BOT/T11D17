@@ -41,6 +41,8 @@ List* remove_door(List* elem, List* root) {
     }
     if (current != NULL) {
         free(elem->door);
+        elem->door = NULL;
+        elem->next = NULL;
         free(elem);
     }
     return (root);
@@ -50,7 +52,9 @@ void destroy(List* root) {
     List* current = root;
     while (current != NULL) {
         free(current->door);
+        current->door = NULL;
         free(current);
         current = current->next;
     }
+    current = NULL;
 }
